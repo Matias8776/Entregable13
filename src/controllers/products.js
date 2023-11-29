@@ -19,7 +19,7 @@ export const passportPremium = passportCall('premium');
 
 export const uploaderProduct = uploader.array('thumbnails');
 
-export const getProducts = async (req, res) => {
+export const getProducts = async (req, res, next) => {
   const limit = req.query.limit;
   const page = req.query.page;
   const category = req.query.category;
@@ -32,7 +32,17 @@ export const getProducts = async (req, res) => {
     disponibility,
     sort
   );
-  response(res, 200, products);
+  if (products.length === 0) {
+    const error = new CustomError({
+      name: 'No existen productos',
+      cause: 'No existen productos',
+      message: 'No existen productos',
+      code: EErrors.NOT_FOUND
+    });
+    next(error);
+  } else {
+    response(res, 200, products);
+  }
 };
 
 export const getProductById = async (req, res, next) => {

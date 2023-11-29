@@ -132,7 +132,7 @@
 
 ###
 
-- POST localhost:8080/api/carts/:cid/product/:pid
+- POST localhost:8080/api/carts/:cid/products/:pid
 
 ## Buscar carrito por ID:
 

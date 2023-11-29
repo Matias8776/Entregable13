@@ -22,7 +22,7 @@ router.get('/', getCarts);
 
 router.get('/:cid', getCartById);
 
-router.post('/:cid/product/:pid', passportUser, addProductToCart);
+router.post('/:cid/products/:pid', passportUser, addProductToCart);
 
 router.delete('/:cid/products/:pid', passportUser, deleteProductInCart);
 

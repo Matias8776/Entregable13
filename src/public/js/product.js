@@ -5,7 +5,7 @@ const pid = document.querySelector('.addButton').getAttribute('data-pid');
 
 addButton.addEventListener('click', function (event) {
   event.preventDefault();
-  fetch(`/api/carts/${cid}/product/${pid}`, {
+  fetch(`/api/carts/${cid}/products/${pid}`, {
     method: 'POST'
   }).then(async (response) => {
     if (response.status === 200) {

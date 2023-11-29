@@ -17,6 +17,8 @@ import cookieParser from 'cookie-parser';
 import config from './config/config.js';
 import errorHandler from './middlewares/errors/index.js';
 import { addLogger, devLogger, prodLogger } from './services/log/logger.js';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUiExpress from 'swagger-ui-express';
 
 const messagesManager = new MessagesManager();
 
@@ -47,6 +49,20 @@ app.use(
 initializePassport();
 app.use(passport.initialize());
 
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.1',
+    info: {
+      title: 'Ecommerce API',
+      description: 'API para ecommerce'
+    }
+  },
+  apis: [`${__dirname}/docs/**/*.yaml`]
+};
+
+const specs = swaggerJSDoc(swaggerOptions);
+
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 app.use('/api/carts', cartsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/sessions', sessionsRouter);

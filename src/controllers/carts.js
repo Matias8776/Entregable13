@@ -170,6 +170,16 @@ export const updateCart = async (req, res, next) => {
   }
 
   const updateCart = req.body;
+  if (!Array.isArray(updateCart)) {
+    const error = new CustomError({
+      name: 'No es un array',
+      cause: 'El body debe ser un array',
+      message: 'El body debe ser un array',
+      code: EErrors.INVALID_TYPES
+    });
+    next(error);
+    return;
+  }
   const errors = [];
 
   for (const prod of updateCart) {
