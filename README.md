@@ -1,4 +1,4 @@
-# Entregable 12
+# Entregable 13
 
 &nbsp;
 
@@ -6,10 +6,16 @@
 
 ###
 
-- git clone https://github.com/Matias8776/Entregable12.git
-- cd Entregable12
+- git clone https://github.com/Matias8776/Entregable13.git
+- cd Entregable13
 - npm i
 - npm start
+
+## Documentación(necesita iniciar sesión):
+
+###
+
+- http://localhost:8080/apidocs
 
 ## Archivo .env:
 
