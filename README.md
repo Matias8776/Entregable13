@@ -11,7 +11,7 @@
 - npm i
 - npm start
 
-## Documentación(necesita iniciar sesión):
+## Documentación(necesita iniciar sesión para probar las rutas protegidas):
 
 ###
 

@@ -19,7 +19,6 @@ import errorHandler from './middlewares/errors/index.js';
 import { addLogger, devLogger, prodLogger } from './services/log/logger.js';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
-import { privateAccess } from './controllers/views.js';
 
 const messagesManager = new MessagesManager();
 
@@ -63,7 +62,7 @@ const swaggerOptions = {
 
 const specs = swaggerJSDoc(swaggerOptions);
 
-app.use('/apidocs', privateAccess, swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 app.use('/api/carts', cartsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/sessions', sessionsRouter);
